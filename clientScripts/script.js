@@ -2,15 +2,15 @@
  * @brief the element "action" of the form is setted to "search".
  */
 function mondayInput(){
-    document.getElementById("weekReservationsForm").elements["typeOfRequest"].value = "mondayReservation";             
+    document.getElementById("weekReservationsForm").elements["typeOfRequest"].value = "lunedì";             
 }
 
 function wednesdayInput(){
-    document.getElementById("weekReservationsForm").elements["typeOfRequest"].value = "wednesdayReservation";             
+    document.getElementById("weekReservationsForm").elements["typeOfRequest"].value = "mercoledì";             
 }
 
 function fridayInput(){
-    document.getElementById("weekReservationsForm").elements["typeOfRequest"].value = "fridayReservation";             
+    document.getElementById("weekReservationsForm").elements["typeOfRequest"].value = "venerdì";             
 }
 
 

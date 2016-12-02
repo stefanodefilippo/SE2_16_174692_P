@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/stefanodefilippo/SE2_16_174692_P/issues"
   },
-  "homepage": "https://github.com/stefanodefilippo/SE2_16_174692_P#readme"
+  "homepage": "https://github.com/stefanodefilippo/SE2_16_174692_P#readme",
+  "dependencies": {
+    "express-session": "^1.14.2"
+  }
 }
