@@ -2,7 +2,7 @@
 <html>
 <body>
 <h1>(:message:)</h1>
-<form action="http://127.0.0.1:1337/home" method = "POST">
+<form action="/home" method = "POST">
   Username:<br>
   <input type="text" name="username">
   <br>

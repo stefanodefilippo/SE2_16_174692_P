@@ -9,14 +9,14 @@
 <body>
 <h1>Compila la tua prenotazione per (:dayReservation:)</h1>
     
-<form action="http://127.0.0.1:1337/addReservation(:dayReservation:)" method = "POST">
+<form action="/addReservation(:dayReservation:)" method = "POST">
     <p><select name = "primo" onchange="changeImageFunction()">
           <option value= "(:pfirst:)">(:pfirst:)</option>
           <option value= "(:psecond:)">(:psecond:)</option>
           <option value= "(:pthird:)">(:pthird:)</option>
           <option value= "(:pfourth:)">(:pfourth:)</option>
           <option value= "(:pfivth:)">(:pfivth:)</option>
-    </select><img id = "cioa" onclick="getElementById('cioa').src = 'http://127.0.0.1:1337/img_(:pfirst:)'" src="http://127.0.0.1:1337/img_(:pfirst:)" alt="Smiley face" height="42" width="42">
+    </select><img id = "cioa" onclick="getElementById('cioa').src = '/img_(:pfirst:)'" src="/img_(:pfirst:)" alt="Smiley face" height="42" width="42">
 </p>
      
     <br>
