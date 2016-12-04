@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/stefanodefilippo/SE2_16_174692_P#readme",
   "dependencies": {
+    "bind": "^0.1.7",
     "express": "^4.14.0",
     "express-session": "^1.14.2"
   }
