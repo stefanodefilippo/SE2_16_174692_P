@@ -6,6 +6,8 @@ var util = require('util');
 //instantiate express
 var app = express();
 
+var fs = require('fs');
+
 //for templates
 var bind = require('bind');
 
@@ -189,6 +191,19 @@ app.use('/addReservation*', function(request, response)
     status = "reservSuccess";
     response.redirect("/home");
         
+});
+
+app.get('/img_*', function (req, res) {
+     
+     var requested = req.originalUrl.replace("/img_", "").replace(/%20/g, " ");
+    
+    console.log(requested);
+    
+     var img = fs.readFileSync("./" + requested + ".jpg");
+    
+     res.writeHead(200, {'Content-Type': 'image/jpg' });
+    
+     res.end(img, 'binary');
 });
 
 // Logout endpoint
