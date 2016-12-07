@@ -16,6 +16,7 @@ var moduleUser = require('./user.js');
 var moduleReservation = require('./reservation.js');
 var moduleBinding = require('./binding.js');
 var moduleMenu = require('./menu.js');
+var moduleEvalutation = require('./evalutation.js');
 
 
 //session
@@ -60,9 +61,12 @@ app.set('port', (process.env.PORT || 1337));
         var dayReservation = "lunedi";
         var primo, secondo, contorno, dessert;
         var menu = moduleMenu.getMenu(primo, secondo, contorno, dessert, dayReservation);
+        var dish;
+        var primiStatus, secondiStatus, contorniStatus, dessertStatus;
+        var serviceEvalutation, cookEvalutation, temperatureEvalutation;
         
 var get_param_list = function(){
-     return [message, id, username, nextMonday, mondayStatus, wednesdayStatus, fridayStatus, dayReservation, primo, secondo, contorno, dessert, menu]
+     return [message, id, username, nextMonday, mondayStatus, wednesdayStatus, fridayStatus, dayReservation, primo, secondo, contorno, dessert, menu, dish, primiStatus, secondiStatus, contorniStatus, dessertStatus, serviceEvalutation, cookEvalutation, temperatureEvalutation];
 }
         
         //list of the various pararmenters
@@ -101,6 +105,10 @@ app.use('/home', function(request, response)
     
             if(status == "reservSuccess"){
                 message = "Prenotazione effettuata con successo"
+            }
+      
+            if(status == "evalOk"){
+                message = "Valutazione inviata"
             }
     
             request.session.id_user = id;
@@ -193,7 +201,84 @@ app.use('/addReservation*', function(request, response)
         
 });
 
-app.get('/img_*', function (req, res) {
+app.use('/evalutate', function(request, response) 
+{                
+    
+    if(request.session.id_user == null){
+        status = "mustLogin";
+        message = "Devi prima effettuare l'accesso per accedere a questa risorsa";
+        response.redirect("/login");
+        return;
+    }
+    
+    [primiStatus, secondiStatus, contorniStatus, dessertStatus] = moduleEvalutation.getEvalutationStatus(id);
+    
+    parametersList = get_param_list();
+        
+    file = "./evalutate.tpl";
+        
+    moduleBinding.doBind(file, parametersList, status, response);
+        
+});
+
+app.use('/evalutate_*', function(request, response) 
+{        
+    
+    dish = request.originalUrl.replace("/evalutate_", "");
+
+    if(request.session.id_user == null){
+        status = "mustLogin";
+        message = "Devi prima effettuare l'accesso per accedere a questa risorsa";
+        response.redirect("/login");
+        return;
+    }
+    
+    id = request.session.id_user;
+    
+    if(request.body.service != undefined){
+        
+        moduleEvalutation.addEvalutation(id, request.body.service, request.body.cook, request.body.temperature, dish);
+        status = "evalOk";
+        response.redirect("/home");
+        return;
+        
+    }
+        
+    
+    
+    parametersList = get_param_list();
+    
+    file = "./evalutateDish.tpl";
+        
+    moduleBinding.doBind(file, parametersList, status, response);
+        
+});
+
+app.use('/showEvalutation_*', function(request, response) 
+{        
+    
+    dish = request.originalUrl.replace("/showEvalutation_", "");
+
+    if(request.session.id_user == null){
+        status = "mustLogin";
+        message = "Devi prima effettuare l'accesso per accedere a questa risorsa";
+        response.redirect("/login");
+        return;
+    }
+    
+    id = request.session.id_user;
+            
+    [serviceEvalutation, cookEvalutation, temperatureEvalutation] = moduleEvalutation.getEvalutation(id, dish);
+    
+    parametersList = get_param_list();
+    
+    file = "./showEvalutation.tpl";
+        
+    moduleBinding.doBind(file, parametersList, status, response);
+        
+});
+
+/*app.get('/img_*', function (req, res) {
      
      var requested = req.originalUrl.replace("/img_", "").replace(/%20/g, " ");
     
@@ -204,7 +289,7 @@ app.get('/img_*', function (req, res) {
      res.writeHead(200, {'Content-Type': 'image/jpg' });
     
      res.end(img, 'binary');
-});
+});*/
 
 // Logout endpoint
 app.get('/logout', function (req, res) {

@@ -23,7 +23,7 @@
        </form>   
             
        
-       <p>Valuta il servizio della settimana trascorsa: <input type="submit" value = "vai" onClick = "evalutateInput()"></p>
+       <p>Valuta il servizio della settimana trascorsa: <a href="/evalutate">vai</a>  </p>
            
             <input type = "hidden" name = "typeOfRequest">
             <input type = "hidden" name = "id" value = "(:id:)">

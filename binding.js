@@ -20,6 +20,14 @@ var doBind = function(file, parametersList, status, response){
                     wednesdayStatus: parametersList[5],
                     fridayStatus: parametersList[6],
                     dayReservation: parametersList[7],
+                    primiStatus: parametersList[14],
+                    secondiStatus: parametersList[15],
+                    contorniStatus: parametersList[16],
+                    dessertStatus: parametersList[17],
+                    serviceEvalutation: parametersList[18],
+                    cookEvalutation: parametersList[19],
+                    temperatureEvalutation: parametersList[20],
+                    dish: parametersList[13],
                     pfirst: menu[0][0],
                     psecond: menu[0][1],
                     pthird: menu[0][2],
@@ -37,7 +45,7 @@ var doBind = function(file, parametersList, status, response){
                     cfivth: menu[2][4],
                     dfirst: menu[3][0],
                     dsecond: menu[3][1],
-                    dthird: menu[3][2]
+                    dthird: menu[3][2],
                 },
 			    function(data) 
 			    {
