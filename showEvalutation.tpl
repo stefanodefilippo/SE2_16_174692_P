@@ -1,16 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Login Form</title>
+  
+  
+  
+      <link rel="stylesheet" href="resources/style.css">
+
+  
+</head>
 <body>
-    <h1>La tua valutazione sulla qualità dei (:dish:)</h1>
+    <h1 class = "message">La tua valutazione sulla qualità dei (:dish:)</h1>
         
-        
-        <p>Come le è stata servita la pietanza? (:serviceEvalutation:)</p>
+        <div class = "screen">
+            <p><label>Come le è stata servita la pietanza? </label><i class = "status">(:serviceEvalutation:)</i></p>
             
-        <p>Secondo lei era ben cucinata? (:cookEvalutation:)</p>
+        <p><label>Secondo lei era ben cucinata? </label><i class = "status">(:cookEvalutation:)</i></p>
            
-        <p>La temperatura andava bene? (:temperatureEvalutation:)</p>
+        <p><label>La temperatura andava bene? </label><i class = "status">(:temperatureEvalutation:)</i></p>
                  
         <p>Torna alla <a href="/evalutate">pagina delle valutazioni</a>  </p>
-
+        </div>
 </body>
 </html>

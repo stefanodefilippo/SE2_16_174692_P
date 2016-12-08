@@ -31,7 +31,7 @@ app.use(session({
 var bodyParser = require('body-parser');
 
 //the client can access to file script.js
-app.use('/script', express.static(__dirname + '/clientScripts/'));
+app.use('/resources', express.static(__dirname + '/clientResources/'));
 
 
 app.use(bodyParser.urlencoded({ extended: false }));

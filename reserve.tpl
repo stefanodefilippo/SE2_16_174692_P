@@ -1,22 +1,27 @@
 <!DOCTYPE html>
-<html>
-    
+<html >
 <head>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="/script/script.js"></script> 
+  <meta charset="UTF-8">
+  <title>Login Form</title>
+  
+  
+  
+      <link rel="stylesheet" href="resources/style.css">
+
+  
 </head>
     
 <body>
-<h1>Compila la tua prenotazione per (:dayReservation:)</h1>
-    
+<h1 class = "message">Compila la tua prenotazione per (:dayReservation:)</h1>
+    <div class="screen">
 <form action="/addReservation(:dayReservation:)" method = "POST">
-    <p><select name = "primo" onchange="changeImageFunction()">
+    <p><select name = "primo">
           <option value= "(:pfirst:)">(:pfirst:)</option>
           <option value= "(:psecond:)">(:psecond:)</option>
           <option value= "(:pthird:)">(:pthird:)</option>
           <option value= "(:pfourth:)">(:pfourth:)</option>
           <option value= "(:pfivth:)">(:pfivth:)</option>
-    </select><img id = "cioa" onclick="getElementById('cioa').src = '/img_(:pfirst:)'" src="/img_(:pfirst:)" alt="Smiley face" height="42" width="42">
+    </select>
 </p>
      
     <br>
@@ -49,9 +54,9 @@
     
     <br>
     
-    <input type = "submit" value = "fatto">
+    <input type = "submit" class="btn btn-primary btn-large btn-block" value = "conferma">
     
 </form> 
-
+    </div>
 </body>
 </html>

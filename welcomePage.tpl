@@ -4,30 +4,36 @@
       <!-- Here goes the metadata -->  
       <meta charset="utf-8">
       <title> Home </title>
-      <script src="/script/script.js"></script>
+      <link rel="stylesheet" href="resources/style.css">
    </head>
    <body>
-       <h1>(:message:)</h1>
-       <h2>Situazione prenotazioni per la settimana (:nextMonday:) / (:endWeek:)</h2>
        
+       <h1 class = "message">(:message:)</h1>
+       
+       <div class="screen">
+           
+    <div class="app-title">
+       <h2>Situazione prenotazioni per la settimana dal  (:nextMonday:)</h2>
+    </div>
+       
+       <div class="control-group">
        <form action="/mondayReservation" method = "POST" id = mondayReservationsForm>
-            <p>Lunedì (:mondayStatus:)<input type="submit" value = "modifica"></p>
+           <label>Lunedì</label> <i class = "status">(:mondayStatus:)</i><input type="submit" class="btn btn-primary btn-large btn-block" value = "modifica">
        </form>
             
        <form action="/wednesdayReservation" method = "POST" id = wednesdayReservationsForm>
-            <p>Mercoledì (:wednesdayStatus:)<input type="submit" value = "modifica"></p>
+           <label>Mercoledì</label><i class = "status"> (:wednesdayStatus:)</i><input type="submit" class="btn btn-primary btn-large btn-block" value = "modifica">
        </form>
        
        <form action="/fridayReservation" method = "POST" id = fridayReservationsForm>
-            <p>Venerdì (:fridayStatus:)<input type="submit" value = "modifica"></p>
+           <label>Venerdì</label> <i class = "status">(:fridayStatus:)</i><input type="submit" class="btn btn-primary btn-large btn-block" value = "modifica">
        </form>   
-            
+       </div>   
+       </div>
        
-       <p>Valuta il servizio della settimana trascorsa: <a href="/evalutate">vai</a>  </p>
-           
-            <input type = "hidden" name = "typeOfRequest">
-            <input type = "hidden" name = "id" value = "(:id:)">
-    <br>
+       <div class="screen">
+           <label>Valuta il servizio della settimana trascorsa: <a href="/evalutate">vai</a>  </label>
+       </div>
        
     </body>
 </html>
