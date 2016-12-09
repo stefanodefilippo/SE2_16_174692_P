@@ -122,7 +122,7 @@ app.use('/home', function(request, response)
 });
 
 
-app.use('/login', function(request, response) 
+app.get('/login', function(request, response) 
 {                
     
     

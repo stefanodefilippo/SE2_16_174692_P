@@ -1,0 +1,137 @@
+swagger: '2.0'
+info:
+  title: Pasti a domicilio
+  description: definition of api in "Pasti a domicilio" project
+  version: "1.0.0"
+# the domain of the service
+host: boiling-stream-93035.herokuapp.com
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /
+produces:
+  - text/html
+consumes:
+  - text/plain
+# the APIs
+paths:
+  /home:
+    get:
+      summary: home page
+      description: if the user has logged in, return the home page of the site, else redirect the user to the login form
+      responses:
+        200:
+          description: if the user has logged in, return the home page
+    post:
+      summary: home page after logging in
+      description: if the user has logged in with correct credentials, return the home page of the site, else redirect the user to the login form
+      responses:
+        200:
+          description: if the user has logged in with correct credentials, return the home page
+          
+  /login:
+    get:
+      summary: login form
+      description: it shows a page with the login form for accessing the site
+      responses:
+        200:
+          description: show the page with the login form
+          
+  /*Reservation:
+    get:
+      summary: show the reservation form
+      description: it shows a form for choosing the reservation for the day setted in the URL (the form is already compiled if a reservation is already being done)
+      responses:
+        200:
+          description: show the page with the reservation form
+            
+  /addReservation*:
+    post:
+      summary: add or replace a reservation in the database
+      description: add a reservation, if there isn't a reservation of that user for that day. Othervise the reservation is replaced.
+      parameters:
+        - name: primo
+          in: formData
+          description: section "primo" of the reservation
+          required: true
+          type: string
+        - name: secondo
+          in: formData
+          description: section "secondo" of the reservation
+          required: true
+          type: string
+        - name: contorno
+          in: formData
+          description: section "contorno" of the reservation
+          required: true
+          type: string
+        - name: dessert
+          in: formData
+          description: section "dessert" of the reservation
+          required: true
+          type: string
+      responses:
+        200:
+          description: the reservation has been added and the home page is shown to the user
+
+  /evalutate:
+    get:
+      summary: evalutations page
+      description: it shows to the user the situation of the service evalutations
+      responses:
+        200:
+          description: shows the evalutations page
+
+  /evalutate_*:
+    get:
+      summary: evalutation form
+      description: it returns to the user a page with the evalutation form for the specified dish
+      responses:
+        200:
+          description: it shows the evalutation form
+    post:
+      summary: add the evalutation in the database
+      description: add an evalutation with the specified parameters and the id of the user
+      parameters:
+        - name: primo
+          in: formData
+          description: section "primo" of the reservation
+          required: true
+          type: string
+        - name: secondo
+          in: formData
+          description: section "secondo" of the reservation
+          required: true
+          type: string
+        - name: contorno
+          in: formData
+          description: section "contorno" of the reservation
+          required: true
+          type: string
+        - name: dessert
+          in: formData
+          description: section "dessert" of the reservation
+          required: true
+          type: string
+      responses:
+        200:
+          description: the evalutation has been added and the home page is shown to the user      
+          
+  /showEvalutation_*:
+    get:
+      summary: show an evalutation done by the user
+      description: show an evalutation that is already being done by the user
+      responses:
+        200:
+          description: it shows a page with the evalutation    
+          
+  /logout:
+    get:
+      summary: logout
+      description: logaut the user
+      responses:
+        200:
+          description: it shows the login form after successfully logging out       
+          
+          
