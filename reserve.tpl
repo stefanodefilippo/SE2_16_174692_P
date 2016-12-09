@@ -11,6 +11,8 @@
   
 </head>
     
+    <div class = "menu"><a href="/home">Home page</a>&ensp;&ensp;&ensp;<a href="/logout">Logout</a></div>
+    
 <body>
 <h1 class = "message">Compila la tua prenotazione per (:dayReservation:)</h1>
     <div class="screen">

@@ -118,6 +118,8 @@ app.use('/home', function(request, response)
             parametersList = get_param_list();
     
             moduleBinding.doBind(file, parametersList, status, response);
+    
+            status = "";
         
 });
 
@@ -141,12 +143,18 @@ app.get('/login', function(request, response)
     if(status == "loginFailed"){
         message = "Username/password scorretti";
     }
+    
+    if(status == "logoutSuccess"){
+        message = "Logout eseguito con successo";
+    }
         
     file = "./loginForm.tpl";
     
     parametersList = get_param_list();
     
     moduleBinding.doBind(file, parametersList, status, response);
+    
+    status = "";
         
 });
 
@@ -294,7 +302,8 @@ app.use('/showEvalutation_*', function(request, response)
 // Logout endpoint
 app.get('/logout', function (req, res) {
   req.session.id_user = null;
-  res.send("logout success!");
+  status = "logoutSuccess";
+  res.redirect("/login");
 });
 
 app.listen(app.get('port'), function() {

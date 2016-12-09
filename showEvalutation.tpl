@@ -11,14 +11,23 @@
   
 </head>
 <body>
+    
+    <div class = "menu"><a href="/home">Home page</a>&ensp;&ensp;&ensp;<a href="/logout">Logout</a></div>
+    
     <h1 class = "message">La tua valutazione sulla qualità dei (:dish:)</h1>
         
         <div class = "screen">
-            <p><label>Come le è stata servita la pietanza? </label><i class = "status">(:serviceEvalutation:)</i></p>
+            <p><label>Come le è stata servita la pietanza? </label><i>(:serviceEvalutation:)</i></p>
             
-        <p><label>Secondo lei era ben cucinata? </label><i class = "status">(:cookEvalutation:)</i></p>
+            <hr>
+            
+        <p><label>Secondo lei era ben cucinata? </label><i>(:cookEvalutation:)</i></p>
+            
+            <hr>
            
-        <p><label>La temperatura andava bene? </label><i class = "status">(:temperatureEvalutation:)</i></p>
+        <p><label>La temperatura andava bene? </label><i>(:temperatureEvalutation:)</i></p>
+            
+            <hr>
                  
         <p>Torna alla <a href="/evalutate">pagina delle valutazioni</a>  </p>
         </div>

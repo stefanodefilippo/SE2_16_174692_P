@@ -8,6 +8,8 @@
    </head>
    <body>
        
+       <div class = "menu"><a href="/logout">Logout</a></div>
+       
        <h1 class = "message">(:message:)</h1>
        
        <div class="screen">
@@ -17,17 +19,27 @@
     </div>
        
        <div class="control-group">
+           
+            <hr>
+
        <form action="/mondayReservation" method = "POST" id = mondayReservationsForm>
-           <label>Lunedì</label> <i class = "status">(:mondayStatus:)</i><input type="submit" class="btn btn-primary btn-large btn-block" value = "modifica">
+           <label>Lunedì:</label> <i class = "status">(:mondayStatus:)</i><input type="submit" class="btn btn-primary btn-large btn-block" value = "modifica">
        </form>
             
+           <hr>
+
        <form action="/wednesdayReservation" method = "POST" id = wednesdayReservationsForm>
-           <label>Mercoledì</label><i class = "status"> (:wednesdayStatus:)</i><input type="submit" class="btn btn-primary btn-large btn-block" value = "modifica">
+           <label>Mercoledì:</label><i class = "status"> (:wednesdayStatus:)</i><input type="submit" class="btn btn-primary btn-large btn-block" value = "modifica">
        </form>
        
+           <hr>
+
        <form action="/fridayReservation" method = "POST" id = fridayReservationsForm>
-           <label>Venerdì</label> <i class = "status">(:fridayStatus:)</i><input type="submit" class="btn btn-primary btn-large btn-block" value = "modifica">
-       </form>   
+           <label>Venerdì:</label> <i class = "status">(:fridayStatus:)</i><input type="submit" class="btn btn-primary btn-large btn-block" value = "modifica">
+       </form> 
+           
+          <hr>
+
        </div>   
        </div>
        

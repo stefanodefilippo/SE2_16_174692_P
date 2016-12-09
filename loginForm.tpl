@@ -12,6 +12,7 @@
 </head>
 
   <body>
+            
     <h1 class = "message">(:message:)</h1>
 	<div class="login">
 		<div class="screen">

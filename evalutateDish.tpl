@@ -11,6 +11,9 @@
   
 </head>
 <body>
+    
+    <div class = "menu"><a href="/home">Home page</a>&ensp;&ensp;&ensp;<a href="/logout">Logout</a></div>
+    
     <h1 class = "message">Valuta la qualità dei (:dish:)</h1>
 
     <div class = "screen">

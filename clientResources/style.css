@@ -83,15 +83,17 @@ a {
 }
 
 label {
-    font-size: 24;
+    font-size: 24px;
     color: #3498DB;
     font-weight: bold;
 }
 
 .status {
     font-style: italic;
-    font-family: "Times New Roman", Times, serif;  
-    font-size: 40;
+    font-family: "Times New Roman", Times, serif; 
+    position:absolute;
+    left:400px;
+    font-size: 20px;
 }
 
 select {
@@ -104,4 +106,12 @@ select {
     font-size: 17px;
    font-weight: bold;
     border-radius: 20px;
+}
+
+.menu {
+   position:absolute;
+   top:25px;
+   right:100px;
+   border-color: yellow;
+   color: yellow;
 }
