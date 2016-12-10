@@ -1,2 +1,12 @@
 # SE2_16_174692_P
-Per il lancio dare node index.js, e digitare in un browser "http://127.0.0.1:1337/login". I due utenti per fare i test sono "gigi" con password hh, e "beppi" con password giu.
+L'applicazione heroku si trova al link https://boiling-stream-93035.herokuapp.com/login.
+Per il test in locale lancio dare node index.js, e digitare in un browser "http://127.0.0.1:1337/login". 
+Gli utenti per fare i test sia su heroku sia in locale sono i seguenti:
+
+username     |   password
+---------------------------
+gigi         |  hh
+t_deluca     |  giu
+v_benvenuti  |  cheiHis8k
+f_lucchesi   |  2010
+a_ricci      |  Blu

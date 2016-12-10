@@ -1,7 +1,13 @@
 //for templates
 var bind = require('bind');
 
-var doBind = function(file, parametersList, status, response){
+/**
+ * @brief It does the binding, given the file and the parameters to be returned.
+ * @param file The file to be returned to the user.
+ * @param parametersList List of parameter to be returned.
+ * @param response Object that represents the HTTP response.
+ */
+var doBind = function(file, parametersList, response){
     
     var menu = parametersList[12];
     
@@ -52,9 +58,9 @@ var doBind = function(file, parametersList, status, response){
 				//write response
 				response.writeHead(200, {'Content-Type': 'text/html'});
 				response.end(data);
-			    })
+			    });
     
-}
+};
 
 //exports functions
 exports.doBind = doBind; 

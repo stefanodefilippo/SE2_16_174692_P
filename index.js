@@ -39,38 +39,37 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set('port', (process.env.PORT || 1337));
 
+//message to return to the user
+var message;
+//template to return to the user
+var file;
+//useful variable for remembering the state when a page redirects the user to another page
+var status;
+//various parameter
+var id;
+var username;
+var password;
+//date of the next monday
+var nextMonday;
+//the order status for the specified day(it can be "completo" o "incompleto")
+var mondayStatus, wednesdayStatus, fridayStatus;
+var dayReservation = "lunedi";
+var primo, secondo, contorno, dessert;
+var menu = moduleMenu.getMenu(primo, secondo, contorno, dessert, dayReservation);
+var dish;
+//status of the user evalutation for the previous week
+var primiStatus, secondiStatus, contorniStatus, dessertStatus;
+var serviceEvalutation, cookEvalutation, temperatureEvalutation;
 
-        //type of the user request, for example "login"
-		var typeOfRequest;// = request.body.typeOfRequest;
-
-        //message to return to the user
-		var message;
-            
-        //template to return to the user
-        var file;
-
-        var status = 200;
-            
-        //various parameter
-        var id;// = request.body.id;
-        var username;// = request.body.username;
-        var password;// = request.body.password;
-        var nextMonday;
-        //assume values "incompleto" o "completo", referring to the order status for that day
-        var mondayStatus, wednesdayStatus, fridayStatus;
-        var dayReservation = "lunedi";
-        var primo, secondo, contorno, dessert;
-        var menu = moduleMenu.getMenu(primo, secondo, contorno, dessert, dayReservation);
-        var dish;
-        var primiStatus, secondiStatus, contorniStatus, dessertStatus;
-        var serviceEvalutation, cookEvalutation, temperatureEvalutation;
-        
+/**
+ * @brief Update the list containing the various parameters.
+ */
 var get_param_list = function(){
      return [message, id, username, nextMonday, mondayStatus, wednesdayStatus, fridayStatus, dayReservation, primo, secondo, contorno, dessert, menu, dish, primiStatus, secondiStatus, contorniStatus, dessertStatus, serviceEvalutation, cookEvalutation, temperatureEvalutation];
-}
+};
         
-        //list of the various pararmenters
-        var parametersList = get_param_list();
+//list of the various pararmenters
+var parametersList = get_param_list();
 
 
 
@@ -84,42 +83,41 @@ app.use('/home', function(request, response)
                 }else{
                     message = "";
                 }
-                file = "./welcomePage.tpl";
+                file = "TPLs/welcomePage.tpl";
             }else{
                 var username = request.body.username;
                 var password = request.body.password;
                 var caio = request.body.caio;
-                console.log(username + password + caio);
                 [message, file, id, status] = moduleUser.authenticate(username, password);
             }
             
-            if(status == "mustLogin"){
-                response.redirect("/login");
-                return;
-            }
+    if(status == "mustLogin"){
+        response.redirect("/login");
+        return;
+    }
     
-            if(status == "loginFailed"){
-                response.redirect("/login");
-                return;
-            }
+    if(status == "loginFailed"){
+        response.redirect("/login");
+        return;
+    }
     
-            if(status == "reservSuccess"){
-                message = "Prenotazione effettuata con successo"
-            }
+    if(status == "reservSuccess"){
+        message = "Prenotazione effettuata con successo";
+    }
       
-            if(status == "evalOk"){
-                message = "Valutazione inviata"
-            }
+    if(status == "evalOk"){
+        message = "Valutazione inviata";
+    }
     
-            request.session.id_user = id;
+    request.session.id_user = id;
     
-            [nextMonday, mondayStatus, wednesdayStatus, fridayStatus] = moduleReservation.getStatus(id);
+    [nextMonday, mondayStatus, wednesdayStatus, fridayStatus] = moduleReservation.getStatus(id);
             
-            parametersList = get_param_list();
+    parametersList = get_param_list();
     
-            moduleBinding.doBind(file, parametersList, status, response);
+    moduleBinding.doBind(file, parametersList, response);
     
-            status = "";
+    status = "";
         
 });
 
@@ -129,30 +127,30 @@ app.get('/login', function(request, response)
     
     
     if(request.session.id_user != null){
-        
         status = "alreadyAuth";
         response.redirect("/home");
         return;
-        
     }
     
     if(status != "mustLogin"){
         message = "";
+    }else{
+        message = "Devi prima effettuare l'accesso per accedere a questa risorsa";
     }
     
     if(status == "loginFailed"){
-        message = "Username/password scorretti";
+        message = "Username/password scorretti (per favore, utilizza le credenziali che ti sono state fornite dalla compagnia di distribuzione)";
     }
     
     if(status == "logoutSuccess"){
         message = "Logout eseguito con successo";
     }
         
-    file = "./loginForm.tpl";
+    file = "TPLs/loginForm.tpl";
     
     parametersList = get_param_list();
     
-    moduleBinding.doBind(file, parametersList, status, response);
+    moduleBinding.doBind(file, parametersList, response);
     
     status = "";
         
@@ -165,7 +163,6 @@ app.use('/*Reservation', function(request, response)
     
     if(request.session.id_user == null){
         status = "mustLogin";
-        message = "Devi prima effettuare l'accesso per accedere a questa risorsa";
         response.redirect("/login");
         return;
     }
@@ -174,22 +171,20 @@ app.use('/*Reservation', function(request, response)
     
     menu = moduleMenu.getMenu(primo, secondo, contorno, dessert, dayReservation);
     
-    file = "./reserve.tpl";
+    file = "TPLs/reserve.tpl";
     
     parametersList = get_param_list();
     
-    moduleBinding.doBind(file, parametersList, status, response);
+    moduleBinding.doBind(file, parametersList, response);
         
 });
 
 app.use('/addReservation*', function(request, response) 
 {                
-    console.log("siamo qui " + dayReservation);
     dayReservation = request.originalUrl.replace("addReservation", "");
     
     if(request.session.id_user == null){
         status = "mustLogin";
-        message = "Devi prima effettuare l'accesso per accedere a questa risorsa";
         response.redirect("/login");
         return;
     }
@@ -202,7 +197,7 @@ app.use('/addReservation*', function(request, response)
     
     moduleReservation.addOrReplaceReservation(id, dayReservation, primo, secondo, contorno, dessert);
     
-    file = "./home.tpl";
+    file = "TPLs/home.tpl";
     
     status = "reservSuccess";
     response.redirect("/home");
@@ -214,7 +209,6 @@ app.use('/evalutate', function(request, response)
     
     if(request.session.id_user == null){
         status = "mustLogin";
-        message = "Devi prima effettuare l'accesso per accedere a questa risorsa";
         response.redirect("/login");
         return;
     }
@@ -223,9 +217,9 @@ app.use('/evalutate', function(request, response)
     
     parametersList = get_param_list();
         
-    file = "./evalutate.tpl";
+    file = "TPLs/evalutate.tpl";
         
-    moduleBinding.doBind(file, parametersList, status, response);
+    moduleBinding.doBind(file, parametersList, response);
         
 });
 
@@ -236,7 +230,6 @@ app.use('/evalutate_*', function(request, response)
 
     if(request.session.id_user == null){
         status = "mustLogin";
-        message = "Devi prima effettuare l'accesso per accedere a questa risorsa";
         response.redirect("/login");
         return;
     }
@@ -249,16 +242,15 @@ app.use('/evalutate_*', function(request, response)
         status = "evalOk";
         response.redirect("/home");
         return;
-        
     }
         
     
     
     parametersList = get_param_list();
     
-    file = "./evalutateDish.tpl";
+    file = "TPLs/evalutateDish.tpl";
         
-    moduleBinding.doBind(file, parametersList, status, response);
+    moduleBinding.doBind(file, parametersList, response);
         
 });
 
@@ -269,7 +261,6 @@ app.use('/showEvalutation_*', function(request, response)
 
     if(request.session.id_user == null){
         status = "mustLogin";
-        message = "Devi prima effettuare l'accesso per accedere a questa risorsa";
         response.redirect("/login");
         return;
     }
@@ -280,24 +271,11 @@ app.use('/showEvalutation_*', function(request, response)
     
     parametersList = get_param_list();
     
-    file = "./showEvalutation.tpl";
+    file = "TPLs/showEvalutation.tpl";
         
-    moduleBinding.doBind(file, parametersList, status, response);
+    moduleBinding.doBind(file, parametersList, response);
         
 });
-
-/*app.get('/img_*', function (req, res) {
-     
-     var requested = req.originalUrl.replace("/img_", "").replace(/%20/g, " ");
-    
-    console.log(requested);
-    
-     var img = fs.readFileSync("./" + requested + ".jpg");
-    
-     res.writeHead(200, {'Content-Type': 'image/jpg' });
-    
-     res.end(img, 'binary');
-});*/
 
 // Logout endpoint
 app.get('/logout', function (req, res) {
