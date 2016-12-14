@@ -11,7 +11,8 @@
       <h1 class = "message">(:message:)</h1>
       <div class="screen">
          <div class="app-title">
-            <h2>Situazione prenotazioni per la settimana dal  (:nextMonday:)</h2>
+            <h2>Situazione prenotazioni per la settimana prossima</h2>
+             *possibilità di compilare e modificare le prenotazioni fino a lunedì (:nextMonday:) escluso
          </div>
          <div class="control-group">
             <hr>
