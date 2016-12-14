@@ -3,7 +3,7 @@
    <head>
       <!-- Here goes the metadata -->  
       <meta charset="utf-8">
-      <title> Home </title>
+      <title>Home</title>
       <link rel="stylesheet" href="resources/style.css">
    </head>
    <body>

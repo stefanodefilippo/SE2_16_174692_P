@@ -2,7 +2,7 @@
 <html >
    <head>
       <meta charset="UTF-8">
-      <title>Login Form</title>
+      <title>Prenotazione</title>
       <link rel="stylesheet" href="resources/style.css">
    </head>
    <div class = "menu"><a href="/home">Home page</a>&ensp;&ensp;&ensp;<a href="/logout">Logout</a></div>

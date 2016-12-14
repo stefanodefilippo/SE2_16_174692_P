@@ -2,7 +2,7 @@
 <html >
    <head>
       <meta charset="UTF-8">
-      <title>Login Form</title>
+      <title>Accedi</title>
       <link rel="stylesheet" href="resources/style.css">
    </head>
    <body>

@@ -2,7 +2,7 @@
 <html>
    <head>
       <meta charset="UTF-8">
-      <title>Login Form</title>
+      <title>Valuta la portata</title>
       <link rel="stylesheet" href="resources/style.css">
    </head>
    <body>
