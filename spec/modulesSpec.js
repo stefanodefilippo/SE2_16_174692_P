@@ -33,12 +33,24 @@ describe("Test reservation.js module",function() {
         });    
     });
     describe("with an inexistent user id",function() {
-        it("it returns a list containing values ['niente', 'niente', 'niente']", function(){
+        it("it returns a list containing values ['incompleto', 'incompleto', 'incompleto']", function(){
            expect(moduleReservation.getStatus(11)[3]).toBe("incompleto");
         });
     
     });
     
+    //function getReservation
+    describe("on valid input",function() {
+        it("it returns dishes of the reservations for that user", function(){
+           expect(moduleReservation.getReservation(1, "/monday")).not.toBe(null);
+        });    
+    });
+    describe("with an inexistent user id",function() {
+        it("by default it returns a list containing values ['niente', 'niente', 'niente']", function(){
+           expect(moduleReservation.getReservation(3, "/monday")[0]).toBe("niente");
+        });
+    
+    });
     
 });
 
